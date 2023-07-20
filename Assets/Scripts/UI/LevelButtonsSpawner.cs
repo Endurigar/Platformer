@@ -1,26 +1,28 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
-public class LevelButtonsSpawner : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Button levelButton;
-    [SerializeField] private Transform levelMenu;
-    [SerializeField] private List<LevelInfo> levelInfos;
-
-    private void Start()
+    public class LevelButtonsSpawner : MonoBehaviour
     {
-        ButtonsSpawner();
-    }
+        [SerializeField] private Button levelButton;
+        [SerializeField] private Transform levelMenu;
+        [SerializeField] private List<LevelInfo> levelInfos;
 
-    private void ButtonsSpawner()
-    {
-        for (int i = 0; i < levelInfos.Count; i++)
+        private void Start()
         {
-            Button newLevelButton = Instantiate(levelButton, levelMenu);
-            newLevelButton.GetComponent<LevelMenu>().SetLevelInfo(levelInfos[i]);
+            ButtonsSpawner();
+        }
+
+        private void ButtonsSpawner()
+        {
+            foreach (var t in levelInfos)
+            {
+                var newLevelButton = Instantiate(levelButton, levelMenu);
+                newLevelButton.GetComponent<LevelMenu>().SetLevelInfo(t);
+            }
         }
     }
 }

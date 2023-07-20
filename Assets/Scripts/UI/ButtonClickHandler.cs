@@ -1,21 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonClickHandler : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private AudioClip audioClip;
-    [SerializeField] private AudioSource audioSource;
-    public static ButtonClickHandler Instance;
-
-    private void Start()
+    public class ButtonClickHandler : MonoBehaviour
     {
-        Instance = this;
-    }
+        [SerializeField] private AudioClip audioClip;
+        [SerializeField] private AudioSource audioSource;
+        public static ButtonClickHandler Instance;
 
-    public void OnClickHandler()
-    {
-        audioSource.PlayOneShot(audioClip);
+        private void Start()
+        {
+            Instance = this;
+        }
+
+        public void OnClickHandler()
+        {
+            audioSource.PlayOneShot(audioClip);
+        }
     }
 }

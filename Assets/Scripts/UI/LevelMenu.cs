@@ -1,29 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utilities;
 
-public class LevelMenu : MonoBehaviour
+namespace UI
 {
-    [SerializeField]private TMP_Text levelName;
-    [SerializeField]private Button levelButton;
-    private LevelInfo levelInfo;
-    
-    private void Start()
+    public class LevelMenu : MonoBehaviour
     {
-        levelButton.onClick.AddListener(LevelButtonClicked);
-    }
+        [SerializeField] private TMP_Text levelName;
+        [SerializeField] private Button levelButton;
+        private LevelInfo levelInfo;
 
-    private void LevelButtonClicked()
-    {
-        SceneManager.LoadScene(levelInfo.SceneName);
-    }
+        private void Start()
+        {
+            levelButton.onClick.AddListener(LevelButtonClicked);
+        }
 
-    public void SetLevelInfo(LevelInfo levelInfo)
-    {
-        this.levelInfo = levelInfo;
-        levelName.text = this.levelInfo.Name;
+        private void LevelButtonClicked()
+        {
+            SceneManager.LoadScene(levelInfo.SceneName);
+        }
+
+        public void SetLevelInfo(LevelInfo levelInfo)
+        {
+            this.levelInfo = levelInfo;
+            levelName.text = this.levelInfo.Name;
+        }
     }
 }
