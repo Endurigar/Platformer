@@ -1,7 +1,7 @@
 using Containers;
 using UnityEngine;
 
-namespace GameMechanics
+namespace Triggers
 {
     public class Key : MonoBehaviour
     {

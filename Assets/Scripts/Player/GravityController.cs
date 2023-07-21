@@ -8,8 +8,8 @@ namespace Player
 {
     public class GravityController : MonoBehaviour
     {
-        [Inject] private ActionContainer actionContainer;
         [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
+        [Inject] private ActionContainer actionContainer;
         private const float CameraYAxisUp = 0;
         private const float CameraYAxisDown = 0.5f;
         private const float DoVirtualDuration = 1;

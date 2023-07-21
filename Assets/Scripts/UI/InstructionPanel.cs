@@ -6,9 +6,11 @@ namespace UI
 {
     public class InstructionPanel : MonoBehaviour
     {
+        private const string PlayerPrefsKey = "instructionComplete";
+        private const int TimeForInstruction = 4;
         private void Start()
         {
-            if (PlayerPrefs.GetInt("instructionComplete") != 1)
+            if (PlayerPrefs.GetInt(PlayerPrefsKey) != 1)
             {
                 StartCoroutine(PanelTime());
             }
@@ -25,9 +27,9 @@ namespace UI
 
         private IEnumerator PanelTime()
         {
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(TimeForInstruction);
             gameObject.SetActive(false);
-            PlayerPrefs.SetInt("instructionComplete", 1);
+            PlayerPrefs.SetInt(PlayerPrefsKey, 1);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Player
     {
         [SerializeField] private float speed;
         [SerializeField] private float maxSpeed;
-        private new Rigidbody rigidbody;
+        private Rigidbody rigidbody;
         private Vector2 input;
         private Vector3 direction;
         private bool gravityState;

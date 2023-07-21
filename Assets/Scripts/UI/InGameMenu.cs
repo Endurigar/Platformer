@@ -17,6 +17,10 @@ namespace UI
         [SerializeField] private TMP_Text text;
         [SerializeField] private LevelInfo levelInfo;
         [Inject] private ActionContainer actionContainer;
+        private const string PlayerPrefsKey = "instructionComplete";
+        private const string MenuTitleText = "Menu";
+        private const string WinTitleText = "U WIN";
+        private const string LoseTitleText = "U LOSE";
 
 
         private void Start()
@@ -29,7 +33,7 @@ namespace UI
 
         private void OnInvokeMenu(InputValue value)
         {
-            if (PlayerPrefs.GetInt("instructionComplete") == 0)
+            if (PlayerPrefs.GetInt(PlayerPrefsKey) == 0)
             {
                 return;
             }
@@ -42,7 +46,7 @@ namespace UI
             else
             {
                 inGameMenu.SetActive(true);
-                text.text = "MENU";
+                text.text = MenuTitleText;
                 Time.timeScale = 0;
             }
         }
@@ -62,13 +66,13 @@ namespace UI
 
         private static void BackToMainMenu()
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(MenuTitleText);
             Time.timeScale = 1;
         }
 
         private void OnWin()
         {
-            text.text = "U WIN";
+            text.text = WinTitleText;
             nextLevel.gameObject.SetActive(true);
             restart.gameObject.SetActive(false);
             inGameMenu.SetActive(true);
@@ -76,7 +80,7 @@ namespace UI
 
         private void OnLose()
         {
-            text.text = "U LOSE";
+            text.text = LoseTitleText;
             inGameMenu.SetActive(true);
         }
 

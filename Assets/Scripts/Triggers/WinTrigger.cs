@@ -1,7 +1,7 @@
 using Containers;
 using UnityEngine;
 
-namespace GameMechanics
+namespace Triggers
 {
     public class WinTrigger : MonoBehaviour
     {
@@ -10,6 +10,7 @@ namespace GameMechanics
         [SerializeField] private AudioClip audioClip;
         [Inject] private ActionContainer actionContainer;
         private int keyCounter;
+        private const int WinCondition = 3;
 
         private void Start()
         {
@@ -18,7 +19,7 @@ namespace GameMechanics
 
         private void OnTriggerEnter(Collider other)
         {
-            if (keyCounter == 3 && other.CompareTag("Player"))
+            if (keyCounter == WinCondition && other.CompareTag("Player"))
             {
                 actionContainer.OnWin();
             }
